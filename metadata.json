@@ -1,0 +1,6 @@
+{
+  "name": "BioTime Cloud - Smart Biometric Attendance & Payroll",
+  "description": "Next-gen virtual biometric time machine & multi-branch attendance system with AI face recognition, multi-fingerprint enrollment, RFID cards, and automated payroll.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
