@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#06b6d4" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle with safe padding -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  
+  <!-- Outer glowing rim -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="url(#glow)" stroke-width="4" stroke-opacity="0.5"/>
+
+  <!-- Scanning grid aesthetic -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.6"/>
+  <circle cx="256" cy="256" r="120" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.5"/>
+
+  <!-- Central Biometric Scanner / Fingerprint & Face Mesh Symbol -->
+  <g filter="url(#shadow)" stroke="url(#cyanGrad)" stroke-width="12" stroke-linecap="round" fill="none">
+    <!-- Fingerprint ridges -->
+    <path d="M256 160 c-40 0 -72 32 -72 72 v40 c0 50 32 80 72 80 s72 -30 72 -80 v-40 c0 -40 -32 -72 -72 -72 Z" stroke-dasharray="60 12"/>
+    <path d="M226 210 c-16 12 -22 30 -22 55 v10 c0 30 18 52 52 52 s52 -22 52 -52 v-10 c0 -25 -6 -43 -22 -55"/>
+    <path d="M256 250 v40"/>
+    <path d="M196 170 c-30 20 -44 52 -44 95 v15 c0 55 42 100 104 100 s104 -45 104 -100 v-15 c0 -43 -14 -75 -44 -95"/>
+    <path d="M166 220 c-10 18 -14 38 -14 65 c0 75 45 125 104 125 s104 -50 104 -125 c0 -27 -4 -47 -14 -65"/>
+  </g>
+
+  <!-- Futuristic Laser Scan Line -->
+  <g>
+    <line x1="120" y1="240" x2="392" y2="240" stroke="#00f5ff" stroke-width="6" stroke-linecap="round" opacity="0.9">
+      <animate attributeName="y1" values="160;360;160" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="160;360;160" dur="3s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="256" cy="240" r="10" fill="#ffffff" opacity="0.8">
+      <animate attributeName="cy" values="160;360;160" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Corner alignment brackets (Kiosk / Biometric Terminal HUD) -->
+  <path d="M 100 140 L 100 100 L 140 100" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 412 140 L 412 100 L 372 100" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 100 372 L 100 412 L 140 412" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 412 372 L 412 412 L 372 412" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Live Pulse Status Dot -->
+  <circle cx="256" cy="450" r="6" fill="#10b981"/>
+</svg>
