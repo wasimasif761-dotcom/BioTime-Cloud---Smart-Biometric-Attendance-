@@ -14,14 +14,28 @@ export async function loadFaceModels(): Promise<boolean> {
 
   loadingPromise = (async () => {
     try {
-      // 1. Try local offline models from /models
-      await Promise.all([
-        faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-      ]);
-      modelsLoaded = true;
-      return true;
+      const basePrefix = (import.meta.env.BASE_URL || './').replace(/\/$/, '');
+      const modelUri = basePrefix ? `${basePrefix}/models` : './models';
+
+      // 1. Try local offline models from base-aware path
+      try {
+        await Promise.all([
+          faceapi.nets.tinyFaceDetector.loadFromUri(modelUri),
+          faceapi.nets.faceLandmark68Net.loadFromUri(modelUri),
+          faceapi.nets.faceRecognitionNet.loadFromUri(modelUri),
+        ]);
+        modelsLoaded = true;
+        return true;
+      } catch (uriErr) {
+        console.warn('Initial model load failed, retrying relative ./models:', uriErr);
+        await Promise.all([
+          faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
+          faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
+          faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+        ]);
+        modelsLoaded = true;
+        return true;
+      }
     } catch (localErr) {
       console.warn('Local model load failed, attempting CDN fallback:', localErr);
       try {
